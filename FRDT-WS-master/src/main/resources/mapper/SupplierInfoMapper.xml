@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sysco.dao.SupplierInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sysco.entity.SupplierInfo">
+    <id column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="effective_date" jdbcType="DATE" property="effectiveDate" />
+    <result column="supplier_name" jdbcType="VARCHAR" property="supplierName" />
+    <result column="corporate_address" jdbcType="VARCHAR" property="corporateAddress" />
+    <result column="supplier_chain_manager" jdbcType="VARCHAR" property="supplierChainManager" />
+    <result column="supplier_chain_contact" jdbcType="VARCHAR" property="supplierChainContact" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="temperature_code" jdbcType="VARCHAR" property="temperatureCode" />
+    <result column="bid_category" jdbcType="VARCHAR" property="bidCategory" />
+    <result column="general_supplier_comments" jdbcType="VARCHAR" property="generalSupplierComments" />
+    <result column="product_costing" jdbcType="VARCHAR" property="productCosting" />
+    <result column="lowest_product_cost" jdbcType="VARCHAR" property="lowestProductCost" />
+    <result column="product_uom" jdbcType="VARCHAR" property="productUom" />
+    <result column="freight_uom" jdbcType="VARCHAR" property="freightUom" />
+    <result column="published_freight_rates" jdbcType="VARCHAR" property="publishedFreightRates" />
+    <result column="pickup_allowances" jdbcType="VARCHAR" property="pickupAllowances" />
+    <result column="freight_different" jdbcType="VARCHAR" property="freightDifferent" />
+    <result column="supplier_comments_freight" jdbcType="VARCHAR" property="supplierCommentsFreight" />
+    <result column="minimum_delivery" jdbcType="VARCHAR" property="minimumDelivery" />
+    <result column="minimum_pickup" jdbcType="VARCHAR" property="minimumPickup" />
+    <result column="minimum_different" jdbcType="VARCHAR" property="minimumDifferent" />
+    <result column="delivery_pickup_period" jdbcType="VARCHAR" property="deliveryPickupPeriod" />
+    <result column="fuel_surcharge_period" jdbcType="VARCHAR" property="fuelSurchargePeriod" />
+    <result column="additional_fees" jdbcType="VARCHAR" property="additionalFees" />
+    <result column="compliance_shipper_count" jdbcType="VARCHAR" property="complianceShipperCount" />
+    <result column="current_pallet_program" jdbcType="VARCHAR" property="currentPalletProgram" />
+    <result column="supplier_comments_profile" jdbcType="VARCHAR" property="supplierCommentsProfile" />
+    <result column="truckload_maximum_weight" jdbcType="DECIMAL" property="truckloadMaximumWeight" />
+    <result column="truckload_maximum_cubes" jdbcType="DECIMAL" property="truckloadMaximumCubes" />
+    <result column="truckload_maximum_cases" jdbcType="DECIMAL" property="truckloadMaximumCases" />
+    <result column="truckload_maximum_pallets" jdbcType="DECIMAL" property="truckloadMaximumPallets" />
+    <result column="rail_maximum_weight" jdbcType="DECIMAL" property="railMaximumWeight" />
+    <result column="rail_maximum_cubes" jdbcType="DECIMAL" property="railMaximumCubes" />
+    <result column="rail_maximum_cases" jdbcType="DECIMAL" property="railMaximumCases" />
+    <result column="rail_maximum_pallets" jdbcType="DECIMAL" property="railMaximumPallets" />
+    <result column="created_date" jdbcType="DATE" property="createdDate" />
+    <result column="created_time" jdbcType="VARCHAR" property="createdTime" />
+    <result column="modified_date" jdbcType="DATE" property="modifiedDate" />
+    <result column="modified_time" jdbcType="VARCHAR" property="modifiedTime" />
+    <result column="modified_by" jdbcType="VARCHAR" property="modifiedBy" />
+    <result column="last_uploaded_date" jdbcType="DATE" property="lastUploadedDate" />
+    <result column="last_date_of_full_review" jdbcType="DATE" property="lastDateOfFullReview" />
+    <result column="next_review_due_date" jdbcType="DATE" property="nextReviewDueDate" />
+    <result column="deleted" jdbcType="VARCHAR" property="deleted" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="bracket1_header" jdbcType="VARCHAR" property="bracket1Header" />
+    <result column="bracket2_header" jdbcType="VARCHAR" property="bracket2Header" />
+    <result column="bracket3_header" jdbcType="VARCHAR" property="bracket3Header" />
+    <result column="bracket4_header" jdbcType="VARCHAR" property="bracket4Header" />
+    <result column="bracket5_header" jdbcType="VARCHAR" property="bracket5Header" />
+    <result column="bracket6_header" jdbcType="VARCHAR" property="bracket6Header" />
+    <result column="bracket7_header" jdbcType="VARCHAR" property="bracket7Header" />
+    <result column="bracket8_header" jdbcType="VARCHAR" property="bracket8Header" />
+    <result column="brackets_uom" jdbcType="VARCHAR" property="bracketsUom" />
+    <result column="business_center" jdbcType="VARCHAR" property="businessCenter" />
+    <result column="corp_billed" jdbcType="VARCHAR" property="corpBilled" />
+    <result column="true_fob_supplier" jdbcType="VARCHAR" property="trueFobSupplier" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uuid, effective_date, supplier_name, corporate_address, supplier_chain_manager,
+    supplier_chain_contact, phone, email, temperature_code, bid_category, general_supplier_comments,
+    product_costing, lowest_product_cost, product_uom, freight_uom, published_freight_rates,
+    pickup_allowances, freight_different, supplier_comments_freight, minimum_delivery,
+    minimum_pickup, minimum_different, delivery_pickup_period, fuel_surcharge_period,
+    additional_fees, compliance_shipper_count, current_pallet_program, supplier_comments_profile, truckload_maximum_weight,
+    truckload_maximum_cubes, truckload_maximum_cases, truckload_maximum_pallets, rail_maximum_weight,
+    rail_maximum_cubes, rail_maximum_cases, rail_maximum_pallets, created_date, created_time,
+    modified_date, modified_time, modified_by, last_uploaded_date, last_date_of_full_review,
+    next_review_due_date,deleted, created_by,
+    bracket1_header, bracket2_header, bracket3_header, bracket4_header, bracket5_header,
+    bracket6_header, bracket7_header, bracket8_header, brackets_uom,
+    business_center, corp_billed, true_fob_supplier
+  </sql>
+
+  <select id="selectSCSSupplier"  parameterType="com.sysco.request.SCSFilterCondition"  resultType="com.sysco.entity.SCSSuppliersInfo">
+    select si.supplier_name vendorName,
+    group_concat(a.sysco_suvc) vendorId,
+    si.last_uploaded_date lastUploadedDate,
+    si.last_date_of_full_review lastDateOfFullReview,
+    si.supplier_chain_manager supplierChainManager,
+    si.business_center businessCenter,
+    si.corp_billed corpBilled,
+    si.true_fob_supplier trueFobSupplier,
+    si.next_review_due_date nextReviewDueDate
+    from SUPPLIER_INFO si
+    join SUPPLIER_SYSCO_SUVC a on si.uuid = a.ref_uuid WHERE 1=1
+    <if test="vendorName!=null and vendorName!=''">
+      and si.supplier_name like '%' #{vendorName} '%'
+    </if>
+    <if test="supplierChainManager!=null and supplierChainManager!=''">
+      and si.supplier_chain_manager like '%' #{supplierChainManager} '%'
+    </if>
+    <if test="businessCenter!=null and businessCenter!=''">
+      and si.business_center like '%' #{businessCenter} '%'
+    </if>
+    <if test="corpBilled!=null and corpBilled!=''">
+      and si.corp_billed like '%' #{corpBilled} '%'
+    </if>
+    <if test="trueFobSupplier!=null and trueFobSupplier!=''">
+      and si.true_fob_supplier like '%' #{trueFobSupplier} '%'
+    </if>
+    <if test="lastUploadedDateBegin!=null and lastUploadedDateBegin!=''">
+      and DATE_FORMAT(si.last_uploaded_date,'%Y-%m-%d') >= #{lastUploadedDateBegin}
+    </if>
+    <if test="lastUploadedDateEnd!=null and lastUploadedDateEnd!=''">
+      and #{lastUploadedDateEnd} >= DATE_FORMAT(si.last_uploaded_date,'%Y-%m-%d')
+    </if>
+    <if test="lastDateOfFullReviewBegin!=null and lastDateOfFullReviewBegin!=''">
+      and DATE_FORMAT(si.last_date_of_full_review,'%Y-%m-%d') >= #{lastDateOfFullReviewBegin}
+    </if>
+    <if test="lastDateOfFullReviewEnd!=null and lastDateOfFullReviewEnd!=''">
+      and <![CDATA[ #{lastDateOfFullReviewEnd} >= DATE_FORMAT(si.last_date_of_full_review,'%Y-%m-%d') ]]>
+    </if>
+    <if test="nextReviewDueDateBegin!=null and nextReviewDueDateBegin!=''">
+      and DATE_FORMAT(si.next_review_due_date,'%Y-%m-%d') >= #{nextReviewDueDateBegin}
+    </if>
+    <if test="nextReviewDueDateEnd!=null and nextReviewDueDateEnd!=''">
+      and #{nextReviewDueDateEnd} >= DATE_FORMAT(si.next_review_due_date,'%Y-%m-%d')
+    </if>
+    AND si.deleted = 'N'
+    --     <![CDATA[   AND DATE_FORMAT(si.effective_date,'%Y-%m-%d') <= DATE_FORMAT(now(),'%Y-%m-%d') ]]>
+    GROUP BY si.supplier_name
+    <choose>
+      <when test="sort != null and sort != ''">
+        ORDER BY ${sort} ${order}
+      </when>
+      <otherwise>
+        ORDER BY si.supplier_name ASC
+      </otherwise>
+    </choose>
+  </select>
+
+  <select id="fetchDocumentsBySupplierName" parameterType="java.lang.String"  resultType="com.sysco.entity.Documents">
+    select distinct si.file_url docName from SUPPLIER_FILE_URL si where uuid in
+    (select uuid from SUPPLIER_INFO where supplier_name= #{vendorName,jdbcType=VARCHAR})
+  </select>
+
+  <select id="getVendorOpcoInfoById" parameterType="java.lang.String" resultType="com.sysco.entity.VendorDetails">
+    select b.supplier_name vendorName,b.uuid vendorNumber, b.additional_fees additionalFees,
+    b.bid_category bidCategory,b.freight_uom freightUom,b.effective_date effectiveDate,b.pickup_allowances pickupAllowances,
+    b.compliance_shipper_count complianceShipperCount, b.corporate_address corporateAddress,b.current_pallet_program currentPalletProgram,
+    b.delivery_pickup_period deliveryPickupPeriod,b.email email,b.freight_different freightDifferent,
+    b.fuel_surcharge_period fuelSurchargePeriod,b.general_supplier_comments generalSupplierComments,
+    b.lowest_product_cost lowestProductCost,b.minimum_delivery minimumDelivery,b.minimum_different minimumDifferent,
+    b.minimum_pickup minimumPickup,b.temperature_code temperatureCode,
+    b.phone Phone,b.product_costing productCosting,b.product_uom productUom,b.published_freight_rates publishedFreightRates,
+    b.supplier_chain_contact supplierChainContact,b.supplier_chain_manager supplierChainManager,
+    b.supplier_comments_freight supplierCommentsFreight,b.supplier_comments_profile supplierCommentsProfile,
+    b.rail_maximum_cases rail_maximum_cases,b.rail_maximum_cubes rail_maximum_cubes,
+    b.rail_maximum_pallets rail_maximum_pallets,b.rail_maximum_weight rail_maximum_weight,
+    b.truckload_maximum_cases truckload_maximum_cases,b.truckload_maximum_cubes truckload_maximum_cubes,
+    b.truckload_maximum_pallets truckload_maximum_pallets,b.truckload_maximum_weight truckload_maximum_weight
+    from SUPPLIER_INFO b
+    where b.uuid IN
+    (select ref_uuid from SUPPLIER_SYSCO_SUVC where sysco_suvc = #{vendorId,jdbcType=VARCHAR})
+  </select>
+
+  <select id="getVendorContractExceptionById" parameterType="java.lang.String" resultType="com.sysco.entity.VendorContractException">
+    select supplier_contract_no id,contract_exception contractException
+    FROM SUPPLIER_CONTRACT_EXCEPTION where uuid IN
+    (select ref_uuid from SUPPLIER_SYSCO_SUVC where sysco_suvc = #{vendorId,jdbcType=VARCHAR}) and deleted = 'N'
+  </select>
+
+  <select id="getVendorLocationById" parameterType="java.lang.String" resultType="com.sysco.entity.VendorLocation">
+    select ship_point_no id,city city,dc_plant dcPlant,drop_trailer dropTrailer,physical_address_zone physicalAddressZone,
+    rail_facilities railFacilities,sourced_product sourcedProduct,state state,zip_code zipCode
+    FROM SUPPLIER_LOCATION where uuid IN
+    (select ref_uuid from SUPPLIER_SYSCO_SUVC where sysco_suvc = #{vendorId,jdbcType=VARCHAR}) and deleted = 'N'
+  </select>
+
+  <select id="getVendorFileUrlById" parameterType="java.lang.String" resultType="com.sysco.entity.VendorFileUrl">
+    select file_url fileUrl
+    FROM SUPPLIER_FILE_URL where uuid IN
+    (select ref_uuid from SUPPLIER_SYSCO_SUVC where sysco_suvc = #{vendorId,jdbcType=VARCHAR})
+  </select>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from SUPPLIER_INFO
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectBySupplierName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from SUPPLIER_INFO
+    where supplier_name = #{supplierName,jdbcType=VARCHAR} AND
+    deleted = 'N'
+  </select>
+
+  <select id="selectVendorByNameLike" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from SUPPLIER_INFO
+    where supplier_name like '%' #{supplierName} '%'
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SUPPLIER_INFO
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sysco.entity.SupplierInfo">
+    insert into SUPPLIER_INFO (uuid, effective_date, supplier_name,
+    corporate_address, supplier_chain_manager,
+    supplier_chain_contact, phone, email,
+    temperature_code, bid_category, general_supplier_comments,
+    product_costing, lowest_product_cost, product_uom,
+    freight_uom, published_freight_rates, pickup_allowances,
+    freight_different, supplier_comments_freight,
+    minimum_delivery, minimum_pickup, minimum_different,
+    delivery_pickup_period, fuel_surcharge_period,
+    additional_fees, compliance_shipper_count, current_pallet_program, supplier_comments_profile,
+    truckload_maximum_weight, truckload_maximum_cubes,
+    truckload_maximum_cases, truckload_maximum_pallets,
+    rail_maximum_weight, rail_maximum_cubes, rail_maximum_cases,
+    rail_maximum_pallets, created_date, created_time,
+    modified_date, modified_time, modified_by,
+    last_uploaded_date, last_date_of_full_review, next_review_due_date, deleted, created_by,
+      bracket1_header, bracket2_header, bracket3_header,
+      bracket4_header, bracket5_header, bracket6_header,
+      bracket7_header, bracket8_header, brackets_uom, business_center,
+      corp_billed, true_fob_supplier
+    )
+    values (#{uuid,jdbcType=VARCHAR}, #{effectiveDate,jdbcType=DATE}, #{supplierName,jdbcType=VARCHAR},
+    #{corporateAddress,jdbcType=VARCHAR}, #{supplierChainManager,jdbcType=VARCHAR},
+    #{supplierChainContact,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+    #{temperatureCode,jdbcType=VARCHAR}, #{bidCategory,jdbcType=VARCHAR}, #{generalSupplierComments,jdbcType=VARCHAR},
+    #{productCosting,jdbcType=VARCHAR}, #{lowestProductCost,jdbcType=VARCHAR}, #{productUom,jdbcType=VARCHAR},
+    #{freightUom,jdbcType=VARCHAR}, #{publishedFreightRates,jdbcType=VARCHAR}, #{pickupAllowances,jdbcType=VARCHAR},
+    #{freightDifferent,jdbcType=VARCHAR}, #{supplierCommentsFreight,jdbcType=VARCHAR},
+    #{minimumDelivery,jdbcType=VARCHAR}, #{minimumPickup,jdbcType=VARCHAR}, #{minimumDifferent,jdbcType=VARCHAR},
+    #{deliveryPickupPeriod,jdbcType=VARCHAR}, #{fuelSurchargePeriod,jdbcType=VARCHAR},
+    #{additionalFees,jdbcType=VARCHAR}, #{complianceShipperCount,jdbcType=VARCHAR}, #{currentPalletProgram,jdbcType=VARCHAR}, #{supplierCommentsProfile,jdbcType=VARCHAR},
+    #{truckloadMaximumWeight,jdbcType=DECIMAL}, #{truckloadMaximumCubes,jdbcType=DECIMAL},
+    #{truckloadMaximumCases,jdbcType=DECIMAL}, #{truckloadMaximumPallets,jdbcType=DECIMAL},
+    #{railMaximumWeight,jdbcType=DECIMAL}, #{railMaximumCubes,jdbcType=DECIMAL}, #{railMaximumCases,jdbcType=DECIMAL},
+    #{railMaximumPallets,jdbcType=DECIMAL}, #{createdDate,jdbcType=DATE}, #{createdTime,jdbcType=VARCHAR},
+    #{modifiedDate,jdbcType=DATE}, #{modifiedTime,jdbcType=VARCHAR}, #{modifiedBy,jdbcType=VARCHAR},
+    #{lastUploadedDate,jdbcType=DATE}, #{lastDateOfFullReview,jdbcType=DATE}, #{nextReviewDueDate,jdbcType=DATE},
+    #{deleted,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR},
+      #{bracket1Header,jdbcType=VARCHAR}, #{bracket2Header,jdbcType=VARCHAR}, #{bracket3Header,jdbcType=VARCHAR},
+      #{bracket4Header,jdbcType=VARCHAR}, #{bracket5Header,jdbcType=VARCHAR}, #{bracket6Header,jdbcType=VARCHAR},
+      #{bracket7Header,jdbcType=VARCHAR}, #{bracket8Header,jdbcType=VARCHAR}, #{bracketsUom,jdbcType=VARCHAR}, #{businessCenter,jdbcType=VARCHAR},
+      #{corpBilled,jdbcType=VARCHAR}, #{trueFobSupplier,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sysco.entity.SupplierInfo">
+    insert into SUPPLIER_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="effectiveDate != null">
+        effective_date,
+      </if>
+      <if test="supplierName != null">
+        supplier_name,
+      </if>
+      <if test="corporateAddress != null">
+        corporate_address,
+      </if>
+      <if test="supplierChainManager != null">
+        supplier_chain_manager,
+      </if>
+      <if test="supplierChainContact != null">
+        supplier_chain_contact,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="temperatureCode != null">
+        temperature_code,
+      </if>
+      <if test="bidCategory != null">
+        bid_category,
+      </if>
+      <if test="generalSupplierComments != null">
+        general_supplier_comments,
+      </if>
+      <if test="productCosting != null">
+        product_costing,
+      </if>
+      <if test="lowestProductCost != null">
+        lowest_product_cost,
+      </if>
+      <if test="productUom != null">
+        product_uom,
+      </if>
+      <if test="freightUom != null">
+        freight_uom,
+      </if>
+      <if test="publishedFreightRates != null">
+        published_freight_rates,
+      </if>
+      <if test="pickupAllowances != null">
+        pickup_allowances,
+      </if>
+      <if test="freightDifferent != null">
+        freight_different,
+      </if>
+      <if test="supplierCommentsFreight != null">
+        supplier_comments_freight,
+      </if>
+      <if test="minimumDelivery != null">
+        minimum_delivery,
+      </if>
+      <if test="minimumPickup != null">
+        minimum_pickup,
+      </if>
+      <if test="minimumDifferent != null">
+        minimum_different,
+      </if>
+      <if test="deliveryPickupPeriod != null">
+        delivery_pickup_period,
+      </if>
+      <if test="fuelSurchargePeriod != null">
+        fuel_surcharge_period,
+      </if>
+      <if test="additionalFees != null">
+        additional_fees,
+      </if>
+      <if test="complianceShipperCount != null">
+        compliance_shipper_count,
+      </if>
+      <if test="currentPalletProgram != null">
+        current_pallet_program,
+      </if>
+      <if test="supplierCommentsProfile != null">
+        supplier_comments_profile,
+      </if>
+      <if test="truckloadMaximumWeight != null">
+        truckload_maximum_weight,
+      </if>
+      <if test="truckloadMaximumCubes != null">
+        truckload_maximum_cubes,
+      </if>
+      <if test="truckloadMaximumCases != null">
+        truckload_maximum_cases,
+      </if>
+      <if test="truckloadMaximumPallets != null">
+        truckload_maximum_pallets,
+      </if>
+      <if test="railMaximumWeight != null">
+        rail_maximum_weight,
+      </if>
+      <if test="railMaximumCubes != null">
+        rail_maximum_cubes,
+      </if>
+      <if test="railMaximumCases != null">
+        rail_maximum_cases,
+      </if>
+      <if test="railMaximumPallets != null">
+        rail_maximum_pallets,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="modifiedDate != null">
+        modified_date,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+      <if test="modifiedBy != null">
+        modified_by,
+      </if>
+      <if test="lastUploadedDate != null">
+        last_uploaded_date,
+      </if>
+      <if test="lastDateOfFullReview != null">
+        last_date_of_full_review,
+      </if>
+      <if test="nextReviewDueDate != null">
+        next_review_due_date,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="bracket1Header != null">
+        bracket1_header,
+      </if>
+      <if test="bracket2Header != null">
+        bracket2_header,
+      </if>
+      <if test="bracket3Header != null">
+        bracket3_header,
+      </if>
+      <if test="bracket4Header != null">
+        bracket4_header,
+      </if>
+      <if test="bracket5Header != null">
+        bracket5_header,
+      </if>
+      <if test="bracket6Header != null">
+        bracket6_header,
+      </if>
+      <if test="bracket7Header != null">
+        bracket7_header,
+      </if>
+      <if test="bracket8Header != null">
+        bracket8_header,
+      </if>
+      <if test="bracketsUom != null">
+        brackets_uom,
+      </if>
+      <if test="businessCenter != null">
+        business_center,
+      </if>
+      <if test="corpBilled != null">
+        corp_billed,
+      </if>
+      <if test="trueFobSupplier != null">
+        true_fob_supplier,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="effectiveDate != null">
+        #{effectiveDate,jdbcType=DATE},
+      </if>
+      <if test="supplierName != null">
+        #{supplierName,jdbcType=VARCHAR},
+      </if>
+      <if test="corporateAddress != null">
+        #{corporateAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierChainManager != null">
+        #{supplierChainManager,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierChainContact != null">
+        #{supplierChainContact,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="temperatureCode != null">
+        #{temperatureCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bidCategory != null">
+        #{bidCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="generalSupplierComments != null">
+        #{generalSupplierComments,jdbcType=VARCHAR},
+      </if>
+      <if test="productCosting != null">
+        #{productCosting,jdbcType=VARCHAR},
+      </if>
+      <if test="lowestProductCost != null">
+        #{lowestProductCost,jdbcType=VARCHAR},
+      </if>
+      <if test="productUom != null">
+        #{productUom,jdbcType=VARCHAR},
+      </if>
+      <if test="freightUom != null">
+        #{freightUom,jdbcType=VARCHAR},
+      </if>
+      <if test="publishedFreightRates != null">
+        #{publishedFreightRates,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupAllowances != null">
+        #{pickupAllowances,jdbcType=VARCHAR},
+      </if>
+      <if test="freightDifferent != null">
+        #{freightDifferent,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierCommentsFreight != null">
+        #{supplierCommentsFreight,jdbcType=VARCHAR},
+      </if>
+      <if test="minimumDelivery != null">
+        #{minimumDelivery,jdbcType=VARCHAR},
+      </if>
+      <if test="minimumPickup != null">
+        #{minimumPickup,jdbcType=VARCHAR},
+      </if>
+      <if test="minimumDifferent != null">
+        #{minimumDifferent,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryPickupPeriod != null">
+        #{deliveryPickupPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="fuelSurchargePeriod != null">
+        #{fuelSurchargePeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="additionalFees != null">
+        #{additionalFees,jdbcType=VARCHAR},
+      </if>
+      <if test="complianceShipperCount != null">
+        #{complianceShipperCount,jdbcType=VARCHAR},
+      </if>
+      <if test="currentPalletProgram != null">
+        #{currentPalletProgram,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierCommentsProfile != null">
+        #{supplierCommentsProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="truckloadMaximumWeight != null">
+        #{truckloadMaximumWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="truckloadMaximumCubes != null">
+        #{truckloadMaximumCubes,jdbcType=DECIMAL},
+      </if>
+      <if test="truckloadMaximumCases != null">
+        #{truckloadMaximumCases,jdbcType=DECIMAL},
+      </if>
+      <if test="truckloadMaximumPallets != null">
+        #{truckloadMaximumPallets,jdbcType=DECIMAL},
+      </if>
+      <if test="railMaximumWeight != null">
+        #{railMaximumWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="railMaximumCubes != null">
+        #{railMaximumCubes,jdbcType=DECIMAL},
+      </if>
+      <if test="railMaximumCases != null">
+        #{railMaximumCases,jdbcType=DECIMAL},
+      </if>
+      <if test="railMaximumPallets != null">
+        #{railMaximumPallets,jdbcType=DECIMAL},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=DATE},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null">
+        #{modifiedDate,jdbcType=DATE},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null">
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUploadedDate != null">
+        #{lastUploadedDate,jdbcType=DATE},
+      </if>
+      <if test="lastDateOfFullReview != null">
+        #{lastDateOfFullReview,jdbcType=DATE},
+      </if>
+      <if test="nextReviewDueDate != null">
+        #{nextReviewDueDate,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket1Header != null">
+        #{bracket1Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket2Header != null">
+        #{bracket2Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket3Header != null">
+        #{bracket3Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket4Header != null">
+        #{bracket4Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket5Header != null">
+        #{bracket5Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket6Header != null">
+        #{bracket6Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket7Header != null">
+        #{bracket7Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket8Header != null">
+        #{bracket8Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracketsUom != null">
+        #{bracketsUom,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCenter != null">
+        #{businessCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="corpBilled != null">
+        #{corpBilled,jdbcType=VARCHAR},
+      </if>
+      <if test="trueFobSupplier != null">
+        #{trueFobSupplier,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sysco.entity.SupplierInfo">
+    update SUPPLIER_INFO
+    <set>
+      <if test="effectiveDate != null">
+        effective_date = #{effectiveDate,jdbcType=DATE},
+      </if>
+      <if test="supplierName != null">
+        supplier_name = #{supplierName,jdbcType=VARCHAR},
+      </if>
+      <if test="corporateAddress != null">
+        corporate_address = #{corporateAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierChainManager != null">
+        supplier_chain_manager = #{supplierChainManager,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierChainContact != null">
+        supplier_chain_contact = #{supplierChainContact,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="temperatureCode != null">
+        temperature_code = #{temperatureCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bidCategory != null">
+        bid_category = #{bidCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="generalSupplierComments != null">
+        general_supplier_comments = #{generalSupplierComments,jdbcType=VARCHAR},
+      </if>
+      <if test="productCosting != null">
+        product_costing = #{productCosting,jdbcType=VARCHAR},
+      </if>
+      <if test="lowestProductCost != null">
+        lowest_product_cost = #{lowestProductCost,jdbcType=VARCHAR},
+      </if>
+      <if test="productUom != null">
+        product_uom = #{productUom,jdbcType=VARCHAR},
+      </if>
+      <if test="freightUom != null">
+        freight_uom = #{freightUom,jdbcType=VARCHAR},
+      </if>
+      <if test="publishedFreightRates != null">
+        published_freight_rates = #{publishedFreightRates,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupAllowances != null">
+        pickup_allowances = #{pickupAllowances,jdbcType=VARCHAR},
+      </if>
+      <if test="freightDifferent != null">
+        freight_different = #{freightDifferent,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierCommentsFreight != null">
+        supplier_comments_freight = #{supplierCommentsFreight,jdbcType=VARCHAR},
+      </if>
+      <if test="minimumDelivery != null">
+        minimum_delivery = #{minimumDelivery,jdbcType=VARCHAR},
+      </if>
+      <if test="minimumPickup != null">
+        minimum_pickup = #{minimumPickup,jdbcType=VARCHAR},
+      </if>
+      <if test="minimumDifferent != null">
+        minimum_different = #{minimumDifferent,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryPickupPeriod != null">
+        delivery_pickup_period = #{deliveryPickupPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="fuelSurchargePeriod != null">
+        fuel_surcharge_period = #{fuelSurchargePeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="additionalFees != null">
+        additional_fees = #{additionalFees,jdbcType=VARCHAR},
+      </if>
+      <if test="complianceShipperCount != null">
+        compliance_shipper_count = #{complianceShipperCount,jdbcType=VARCHAR},
+      </if>
+      <if test="currentPalletProgram != null">
+        current_pallet_program = #{currentPalletProgram,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierCommentsProfile != null">
+        supplier_comments_profile = #{supplierCommentsProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="truckloadMaximumWeight != null">
+        truckload_maximum_weight = #{truckloadMaximumWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="truckloadMaximumCubes != null">
+        truckload_maximum_cubes = #{truckloadMaximumCubes,jdbcType=DECIMAL},
+      </if>
+      <if test="truckloadMaximumCases != null">
+        truckload_maximum_cases = #{truckloadMaximumCases,jdbcType=DECIMAL},
+      </if>
+      <if test="truckloadMaximumPallets != null">
+        truckload_maximum_pallets = #{truckloadMaximumPallets,jdbcType=DECIMAL},
+      </if>
+      <if test="railMaximumWeight != null">
+        rail_maximum_weight = #{railMaximumWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="railMaximumCubes != null">
+        rail_maximum_cubes = #{railMaximumCubes,jdbcType=DECIMAL},
+      </if>
+      <if test="railMaximumCases != null">
+        rail_maximum_cases = #{railMaximumCases,jdbcType=DECIMAL},
+      </if>
+      <if test="railMaximumPallets != null">
+        rail_maximum_pallets = #{railMaximumPallets,jdbcType=DECIMAL},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=DATE},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null">
+        modified_date = #{modifiedDate,jdbcType=DATE},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null">
+        modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUploadedDate != null">
+        last_uploaded_date = #{lastUploadedDate,jdbcType=DATE},
+      </if>
+      <if test="lastDateOfFullReview != null">
+        last_date_of_full_review = #{lastDateOfFullReview,jdbcType=DATE},
+      </if>
+      <if test="nextReviewDueDate != null">
+        next_review_due_date = #{nextReviewDueDate,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket1Header != null">
+        bracket1_header = #{bracket1Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket2Header != null">
+        bracket2_header = #{bracket2Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket3Header != null">
+        bracket3_header = #{bracket3Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket4Header != null">
+        bracket4_header = #{bracket4Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket5Header != null">
+        bracket5_header = #{bracket5Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket6Header != null">
+        bracket6_header = #{bracket6Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket7Header != null">
+        bracket7_header = #{bracket7Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket8Header != null">
+        bracket8_header = #{bracket8Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracketsUom != null">
+        brackets_uom = #{bracketsUom,jdbcType=VARCHAR},
+      </if>
+      <if test="businessCenter != null">
+        business_center = #{businessCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="corpBilled != null">
+        corp_billed = #{corpBilled,jdbcType=VARCHAR},
+      </if>
+      <if test="trueFobSupplier != null">
+        true_fob_supplier = #{trueFobSupplier,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sysco.entity.SupplierInfo">
+    update SUPPLIER_INFO
+    set effective_date = #{effectiveDate,jdbcType=DATE},
+    supplier_name = #{supplierName,jdbcType=VARCHAR},
+    corporate_address = #{corporateAddress,jdbcType=VARCHAR},
+    supplier_chain_manager = #{supplierChainManager,jdbcType=VARCHAR},
+    supplier_chain_contact = #{supplierChainContact,jdbcType=VARCHAR},
+    phone = #{phone,jdbcType=VARCHAR},
+    email = #{email,jdbcType=VARCHAR},
+    temperature_code = #{temperatureCode,jdbcType=VARCHAR},
+    bid_category = #{bidCategory,jdbcType=VARCHAR},
+    general_supplier_comments = #{generalSupplierComments,jdbcType=VARCHAR},
+    product_costing = #{productCosting,jdbcType=VARCHAR},
+    lowest_product_cost = #{lowestProductCost,jdbcType=VARCHAR},
+    product_uom = #{productUom,jdbcType=VARCHAR},
+    freight_uom = #{freightUom,jdbcType=VARCHAR},
+    published_freight_rates = #{publishedFreightRates,jdbcType=VARCHAR},
+    pickup_allowances = #{pickupAllowances,jdbcType=VARCHAR},
+    freight_different = #{freightDifferent,jdbcType=VARCHAR},
+    supplier_comments_freight = #{supplierCommentsFreight,jdbcType=VARCHAR},
+    minimum_delivery = #{minimumDelivery,jdbcType=VARCHAR},
+    minimum_pickup = #{minimumPickup,jdbcType=VARCHAR},
+    minimum_different = #{minimumDifferent,jdbcType=VARCHAR},
+    delivery_pickup_period = #{deliveryPickupPeriod,jdbcType=VARCHAR},
+    fuel_surcharge_period = #{fuelSurchargePeriod,jdbcType=VARCHAR},
+    additional_fees = #{additionalFees,jdbcType=VARCHAR},
+    compliance_shipper_count = #{complianceShipperCount,jdbcType=VARCHAR},
+    current_pallet_program = #{currentPalletProgram,jdbcType=VARCHAR},
+    supplier_comments_profile = #{supplierCommentsProfile,jdbcType=VARCHAR},
+    truckload_maximum_weight = #{truckloadMaximumWeight,jdbcType=DECIMAL},
+    truckload_maximum_cubes = #{truckloadMaximumCubes,jdbcType=DECIMAL},
+    truckload_maximum_cases = #{truckloadMaximumCases,jdbcType=DECIMAL},
+    truckload_maximum_pallets = #{truckloadMaximumPallets,jdbcType=DECIMAL},
+    rail_maximum_weight = #{railMaximumWeight,jdbcType=DECIMAL},
+    rail_maximum_cubes = #{railMaximumCubes,jdbcType=DECIMAL},
+    rail_maximum_cases = #{railMaximumCases,jdbcType=DECIMAL},
+    rail_maximum_pallets = #{railMaximumPallets,jdbcType=DECIMAL},
+    created_date = #{createdDate,jdbcType=DATE},
+    created_time = #{createdTime,jdbcType=VARCHAR},
+    modified_date = #{modifiedDate,jdbcType=DATE},
+    modified_time = #{modifiedTime,jdbcType=VARCHAR},
+    modified_by = #{modifiedBy,jdbcType=VARCHAR},
+    last_uploaded_date = #{lastUploadedDate,jdbcType=DATE},
+    last_date_of_full_review = #{lastDateOfFullReview,jdbcType=DATE},
+    next_review_due_date = #{nextReviewDueDate,jdbcType=DATE},
+    deleted = #{deleted,jdbcType=VARCHAR},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      bracket1_header = #{bracket1Header,jdbcType=VARCHAR},
+      bracket2_header = #{bracket2Header,jdbcType=VARCHAR},
+      bracket3_header = #{bracket3Header,jdbcType=VARCHAR},
+      bracket4_header = #{bracket4Header,jdbcType=VARCHAR},
+      bracket5_header = #{bracket5Header,jdbcType=VARCHAR},
+      bracket6_header = #{bracket6Header,jdbcType=VARCHAR},
+      bracket7_header = #{bracket7Header,jdbcType=VARCHAR},
+      bracket8_header = #{bracket8Header,jdbcType=VARCHAR},
+      brackets_uom = #{bracketsUom,jdbcType=VARCHAR},
+      business_center = #{businessCenter,jdbcType=VARCHAR},
+      corp_billed = #{corpBilled,jdbcType=VARCHAR},
+      true_fob_supplier = #{trueFobSupplier,jdbcType=VARCHAR}
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

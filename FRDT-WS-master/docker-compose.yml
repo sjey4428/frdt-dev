@@ -1,0 +1,11 @@
+version: '2'
+services:
+  frdtWS:
+    image: sysco/frdtws:frdtwsimage-build-${sysco_frdt_build_number}
+    ports:
+      - '8080:8080'
+    environment:
+      - APPLICATION_ENV=${APPLICATION_ENV}
+    labels:
+      io.rancher.scheduler.affinity:host_label: service=frdt_web
+      io.rancher.container.pull_image: always 

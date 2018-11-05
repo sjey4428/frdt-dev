@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sysco.dao.SupplierContractExceptionMapper">
+  <resultMap id="BaseResultMap" type="com.sysco.entity.SupplierContractException">
+    <id column="supplier_contract_no" jdbcType="INTEGER" property="supplierContractNo" />
+    <id column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="contract_exception" jdbcType="VARCHAR" property="contractException" />
+    <result column="created_date" jdbcType="DATE" property="createdDate" />
+    <result column="created_time" jdbcType="VARCHAR" property="createdTime" />
+    <result column="modified_date" jdbcType="DATE" property="modifiedDate" />
+    <result column="modified_time" jdbcType="VARCHAR" property="modifiedTime" />
+    <result column="modified_by" jdbcType="VARCHAR" property="modifiedBy" />
+    <result column="deleted" jdbcType="VARCHAR" property="deleted" />
+    <result column="effective_date" jdbcType="DATE" property="effectiveDate" />
+    <result column="bracket1_header" jdbcType="VARCHAR" property="bracket1Header" />
+    <result column="bracket2_header" jdbcType="VARCHAR" property="bracket2Header" />
+    <result column="bracket3_header" jdbcType="VARCHAR" property="bracket3Header" />
+    <result column="bracket4_header" jdbcType="VARCHAR" property="bracket4Header" />
+    <result column="bracket5_header" jdbcType="VARCHAR" property="bracket5Header" />
+    <result column="bracket6_header" jdbcType="VARCHAR" property="bracket6Header" />
+    <result column="bracket7_header" jdbcType="VARCHAR" property="bracket7Header" />
+    <result column="bracket8_header" jdbcType="VARCHAR" property="bracket8Header" />
+    <result column="pickup_allowance_uom" jdbcType="VARCHAR" property="pickupAllowanceUom" />
+    <result column="freight_rate_uom" jdbcType="VARCHAR" property="freightRateUom" />
+    <result column="brackets_uom" jdbcType="VARCHAR" property="bracketsUom" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    supplier_contract_no, uuid, contract_exception, created_date, created_time,
+    modified_date, modified_time, modified_by, deleted, effective_date, bracket1_header, bracket2_header,
+    bracket3_header, bracket4_header, bracket5_header, bracket6_header, bracket7_header,
+    bracket8_header, pickup_allowance_uom, freight_rate_uom, brackets_uom
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.sysco.entity.SupplierContractExceptionKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from SUPPLIER_CONTRACT_EXCEPTION
+    where supplier_contract_no = #{supplierContractNo,jdbcType=INTEGER}
+    and uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByContractException" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from SUPPLIER_CONTRACT_EXCEPTION where 1 = 1
+    AND contract_exception = #{contractException}
+    AND deleted = 'N'
+    AND uuid = #{uuid}
+  </select>
+  <select id="selectByUuid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from SUPPLIER_CONTRACT_EXCEPTION where 1 = 1
+    AND uuid = #{uuid}
+    <if test="deleted!=null and deleted!=''">
+      AND deleted =  #{deleted}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.sysco.entity.SupplierContractExceptionKey">
+    delete from SUPPLIER_CONTRACT_EXCEPTION
+    where supplier_contract_no = #{supplierContractNo,jdbcType=INTEGER}
+    and uuid = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sysco.entity.SupplierContractException">
+    insert into SUPPLIER_CONTRACT_EXCEPTION (supplier_contract_no, uuid, contract_exception,
+    created_date, created_time, modified_date,
+    modified_time, modified_by, effective_date,
+    deleted, bracket1_header,
+    bracket2_header, bracket3_header, bracket4_header,
+    bracket5_header, bracket6_header, bracket7_header,
+    bracket8_header, pickup_allowance_uom, freight_rate_uom,
+    brackets_uom)
+    values (#{supplierContractNo,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{contractException,jdbcType=VARCHAR},
+    #{createdDate,jdbcType=DATE}, #{createdTime,jdbcType=VARCHAR}, #{modifiedDate,jdbcType=DATE},
+    #{modifiedTime,jdbcType=VARCHAR}, #{modifiedBy,jdbcType=VARCHAR},#{effectiveDate,jdbcType=DATE},
+    #{deleted,jdbcType=VARCHAR}, #{bracket1Header,jdbcType=VARCHAR},
+    #{bracket2Header,jdbcType=VARCHAR}, #{bracket3Header,jdbcType=VARCHAR}, #{bracket4Header,jdbcType=VARCHAR},
+    #{bracket5Header,jdbcType=VARCHAR}, #{bracket6Header,jdbcType=VARCHAR}, #{bracket7Header,jdbcType=VARCHAR},
+    #{bracket8Header,jdbcType=VARCHAR}, #{pickupAllowanceUom,jdbcType=VARCHAR}, #{freightRateUom,jdbcType=VARCHAR},
+    #{bracketsUom,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sysco.entity.SupplierContractException">
+    insert into SUPPLIER_CONTRACT_EXCEPTION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierContractNo != null">
+        supplier_contract_no,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="contractException != null">
+        contract_exception,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="modifiedDate != null">
+        modified_date,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+      <if test="modifiedBy != null">
+        modified_by,
+      </if>
+      <if test="effectiveDate != null">
+        effective_date,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="bracket1Header != null">
+        bracket1_header,
+      </if>
+      <if test="bracket2Header != null">
+        bracket2_header,
+      </if>
+      <if test="bracket3Header != null">
+        bracket3_header,
+      </if>
+      <if test="bracket4Header != null">
+        bracket4_header,
+      </if>
+      <if test="bracket5Header != null">
+        bracket5_header,
+      </if>
+      <if test="bracket6Header != null">
+        bracket6_header,
+      </if>
+      <if test="bracket7Header != null">
+        bracket7_header,
+      </if>
+      <if test="bracket8Header != null">
+        bracket8_header,
+      </if>
+      <if test="pickupAllowanceUom != null">
+        pickup_allowance_uom,
+      </if>
+      <if test="freightRateUom != null">
+        freight_rate_uom,
+      </if>
+      <if test="bracketsUom != null">
+        brackets_uom,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierContractNo != null">
+        #{supplierContractNo,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="contractException != null">
+        #{contractException,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=DATE},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null">
+        #{modifiedDate,jdbcType=DATE},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null">
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="effectiveDate != null">
+        #{effectiveDate,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket1Header != null">
+        #{bracket1Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket2Header != null">
+        #{bracket2Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket3Header != null">
+        #{bracket3Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket4Header != null">
+        #{bracket4Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket5Header != null">
+        #{bracket5Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket6Header != null">
+        #{bracket6Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket7Header != null">
+        #{bracket7Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket8Header != null">
+        #{bracket8Header,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupAllowanceUom != null">
+        #{pickupAllowanceUom,jdbcType=VARCHAR},
+      </if>
+      <if test="freightRateUom != null">
+        #{freightRateUom,jdbcType=VARCHAR},
+      </if>
+      <if test="bracketsUom != null">
+        #{bracketsUom,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into SUPPLIER_CONTRACT_EXCEPTION (supplier_contract_no, uuid, contract_exception,
+    created_date, created_time, modified_date,
+    modified_time, modified_by,effective_date, deleted, bracket1_header,
+    bracket2_header, bracket3_header, bracket4_header,
+    bracket5_header, bracket6_header, bracket7_header,
+    bracket8_header, pickup_allowance_uom, freight_rate_uom,
+    brackets_uom)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.supplierContractNo,jdbcType=INTEGER}, #{item.uuid,jdbcType=VARCHAR}, #{item.contractException,jdbcType=VARCHAR},
+      #{item.createdDate,jdbcType=DATE}, #{item.createdTime,jdbcType=VARCHAR}, #{item.modifiedDate,jdbcType=DATE},
+      #{item.modifiedTime,jdbcType=VARCHAR}, #{item.modifiedBy,jdbcType=VARCHAR},
+      #{item.effectiveDate,jdbcType=DATE}, #{item.deleted,jdbcType=VARCHAR}, #{item.bracket1Header,jdbcType=VARCHAR},
+      #{item.bracket2Header,jdbcType=VARCHAR}, #{item.bracket3Header,jdbcType=VARCHAR}, #{item.bracket4Header,jdbcType=VARCHAR},
+      #{item.bracket5Header,jdbcType=VARCHAR}, #{item.bracket6Header,jdbcType=VARCHAR}, #{item.bracket7Header,jdbcType=VARCHAR},
+      #{item.bracket8Header,jdbcType=VARCHAR}, #{item.pickupAllowanceUom,jdbcType=VARCHAR}, #{item.freightRateUom,jdbcType=VARCHAR},
+      #{item.bracketsUom,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.sysco.entity.SupplierContractException">
+    update SUPPLIER_CONTRACT_EXCEPTION
+    <set>
+      <if test="contractException != null">
+        contract_exception = #{contractException,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=DATE},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null">
+        modified_date = #{modifiedDate,jdbcType=DATE},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null">
+        modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="effectiveDate != null">
+        effective_date = #{effectiveDate,jdbcType=DATE},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket1Header != null">
+        bracket1_header = #{bracket1Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket2Header != null">
+        bracket2_header = #{bracket2Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket3Header != null">
+        bracket3_header = #{bracket3Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket4Header != null">
+        bracket4_header = #{bracket4Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket5Header != null">
+        bracket5_header = #{bracket5Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket6Header != null">
+        bracket6_header = #{bracket6Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket7Header != null">
+        bracket7_header = #{bracket7Header,jdbcType=VARCHAR},
+      </if>
+      <if test="bracket8Header != null">
+        bracket8_header = #{bracket8Header,jdbcType=VARCHAR},
+      </if>
+      <if test="pickupAllowanceUom != null">
+        pickup_allowance_uom = #{pickupAllowanceUom,jdbcType=VARCHAR},
+      </if>
+      <if test="freightRateUom != null">
+        freight_rate_uom = #{freightRateUom,jdbcType=VARCHAR},
+      </if>
+      <if test="bracketsUom != null">
+        brackets_uom = #{bracketsUom,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where supplier_contract_no = #{supplierContractNo,jdbcType=INTEGER}
+    and uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sysco.entity.SupplierContractException">
+    update SUPPLIER_CONTRACT_EXCEPTION
+    set contract_exception = #{contractException,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=DATE},
+      created_time = #{createdTime,jdbcType=VARCHAR},
+      modified_date = #{modifiedDate,jdbcType=DATE},
+      modified_time = #{modifiedTime,jdbcType=VARCHAR},
+      modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      effective_date = #{effectiveDate,jdbcType=DATE},
+      deleted = #{deleted,jdbcType=VARCHAR},
+      bracket1_header = #{bracket1Header,jdbcType=VARCHAR},
+      bracket2_header = #{bracket2Header,jdbcType=VARCHAR},
+      bracket3_header = #{bracket3Header,jdbcType=VARCHAR},
+      bracket4_header = #{bracket4Header,jdbcType=VARCHAR},
+      bracket5_header = #{bracket5Header,jdbcType=VARCHAR},
+      bracket6_header = #{bracket6Header,jdbcType=VARCHAR},
+      bracket7_header = #{bracket7Header,jdbcType=VARCHAR},
+      bracket8_header = #{bracket8Header,jdbcType=VARCHAR},
+      pickup_allowance_uom = #{pickupAllowanceUom,jdbcType=VARCHAR},
+      freight_rate_uom = #{freightRateUom,jdbcType=VARCHAR},
+      brackets_uom = #{bracketsUom,jdbcType=VARCHAR}
+    where supplier_contract_no = #{supplierContractNo,jdbcType=INTEGER}
+      and uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

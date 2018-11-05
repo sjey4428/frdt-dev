@@ -1,0 +1,85 @@
+{
+  "info": {
+    "effectiveDate": "2009-12-10",
+    "supplierName": "qll",
+    "corporateAddress": "beijing",
+    "supplierChainContact": "584545",
+    "supplierChainManager": "584545",
+    "phone": "13588156967",
+    "email": "zhu.james@corp.sysco.com",
+    "syscoSuvc": "987654",
+    "temperatureCode": "8744",
+    "bidCategory": "opop",
+    "generalSupplierComments": "qweqweqweq",
+    "productCosting": "qweq",
+    "lowestProductCost": "Y",
+    "productUom": "weqwe",
+    "freightUom": "12312",
+    "publishedFreightRates": "dsad",
+    "pickupAllowances": "Y",
+    "freightDifferent": "Y",
+    "supplierCommentsFreight": "das",
+    "minimumDelivery": "das",
+    "minimumPickup": "da",
+    "minimumDifferent": "Y",
+    "deliveryPickupPeriod": "fsd",
+    "fuelSurchargePeriod": "dsa",
+    "additionalFees": "Y",
+    "complianceShipperCount":"N",
+    "currentPalletProgram": "d",
+    "supplierCommentsProfile": "d"
+  },
+  "locations": [
+    {
+      "physicalAddressZone": "kunming luju",
+      "city": "km",
+      "state": "op",
+      "zipCode": "86541",
+      "dcPlant": "23w",
+      "sourcedProduct": "Y",
+      "railFacilities": "Y",
+      "dropTrailer": "Y",
+      "syscoSuvc": "987654"
+    },
+    {
+      "physicalAddressZone": "hangzhou binjiang",
+      "city": "hz",
+      "state": "bj",
+      "zipCode": "05213",
+      "dcPlant": "23w",
+      "sourcedProduct": "Y",
+      "railFacilities": "Y",
+      "dropTrailer": "Y",
+      "syscoSuvc": "987654"
+    }
+  ],
+  "fileUrls":[
+    {
+      "syscoSuvc":"987654",
+      "fileUrl":"2312312321"
+    }
+  ],
+  "contractExceptions":[
+    {
+      "syscoSuvc":"987654",
+      "contractException":"dasdsadasd"
+    },
+    {
+      "syscoSuvc":"987654",
+      "contractException":"x2"
+    }
+  ],
+  "email":"zhu.james@corp.sysco.com",
+  "railMaximum": {
+    "cases": 120,
+    "cubes": 10,
+    "pallets": 0.63,
+    "weight": 20.69
+  },
+  "truckMaximum": {
+    "cases": 150,
+    "cubes": 20.699,
+    "pallets": 25.664,
+    "weight": 0
+  }
+}

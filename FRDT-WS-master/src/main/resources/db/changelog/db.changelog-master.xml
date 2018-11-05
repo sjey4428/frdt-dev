@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="classpath:/db/sql/SHIP_POINT_DETAIL.sql" relativeToChangelogFile="false"/>
+    <include file="classpath:/db/sql/SUPPLIER_INFO.sql" relativeToChangelogFile="false"/>
+    <include file="classpath:/db/sql/SUPPLIER_LOCATION.sql" relativeToChangelogFile="false"/>
+    <include file="classpath:/db/sql/SUPPLIER_LOG.sql" relativeToChangelogFile="false"/>
+    <include file="classpath:/db/sql/SUPPLIER_FILE_URL.sql" relativeToChangelogFile="false"/>
+    <include file="classpath:/db/sql/SUPPLIER_CONTRACT_EXCEPTION.sql" relativeToChangelogFile="false"/>
+    <include file="classpath:/db/sql/SUPPLIER_SYSCO_SUVC.sql" relativeToChangelogFile="false"/>
+    <include file="classpath:/db/sql/FREIGHT_UPDATE_DETAIL.sql" relativeToChangelogFile="false"/>
+    <include file="classpath:/db/sql/ADD_FREIGHT_UPDATE_UUID.sql" relativeToChangelogFile="false"/>
+</databaseChangeLog>

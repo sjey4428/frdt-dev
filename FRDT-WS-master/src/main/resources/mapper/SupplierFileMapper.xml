@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sysco.dao.SupplierFileMapper">
+  <resultMap id="BaseResultMap" type="com.sysco.entity.SupplierFileKey">
+    <id column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <id column="file_url" jdbcType="VARCHAR" property="fileUrl" />
+  </resultMap>
+  <select id="selectByUuid" resultType="com.sysco.entity.SupplierFileKey">
+    SELECT uuid,
+    file_url fileUrl
+    FROM  SUPPLIER_FILE_URL
+    WHERE uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="com.sysco.entity.SupplierFileKey">
+    delete from SUPPLIER_FILE_URL
+    where uuid = #{uuid,jdbcType=VARCHAR}
+      and file_url = #{fileUrl,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sysco.entity.SupplierFileKey">
+    insert into SUPPLIER_FILE_URL (uuid, file_url)
+    values (#{uuid,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into SUPPLIER_FILE_URL (uuid, file_url)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.uuid,jdbcType=VARCHAR}, #{item.fileUrl,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.sysco.entity.SupplierFileKey">
+    insert into SUPPLIER_FILE_URL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="fileUrl != null">
+        file_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="fileUrl != null">
+        #{fileUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

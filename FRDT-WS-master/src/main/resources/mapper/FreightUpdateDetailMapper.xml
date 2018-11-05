@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sysco.dao.FreightUpdateDetailMapper">
+  <resultMap id="BaseResultMap" type="com.sysco.entity.FreightUpdateDetail">
+    <id column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <id column="effective_date" jdbcType="DATE" property="effectiveDate" />
+    <result column="pickup_allowance" jdbcType="DECIMAL" property="pickupAllowance" />
+    <result column="bracket_value" jdbcType="DECIMAL" property="bracketValue" />
+    <result column="bracket_type" jdbcType="INTEGER" property="bracketType" />
+    <result column="surcharge" jdbcType="DECIMAL" property="surcharge" />
+    <result column="pu_percent" jdbcType="DECIMAL" property="puPercent" />
+    <result column="update_date" jdbcType="DATE" property="updateDate" />
+    <result column="created_date" jdbcType="DATE" property="createdDate" />
+    <result column="created_time" jdbcType="VARCHAR" property="createdTime" />
+    <result column="modified_date" jdbcType="DATE" property="modifiedDate" />
+    <result column="modified_time" jdbcType="VARCHAR" property="modifiedTime" />
+    <result column="modified_by" jdbcType="VARCHAR" property="modifiedBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uuid, effective_date, pickup_allowance, bracket_value, bracket_type, surcharge, pu_percent,
+    update_date, created_date, created_time, modified_date, modified_time, modified_by
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.sysco.entity.FreightUpdateDetailKey" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from FREIGHT_UPDATE_DETAIL
+    where uuid = #{uuid,jdbcType=VARCHAR}
+    and effective_date = #{effectiveDate,jdbcType=DATE}
+  </select>
+  <select id="selectByUuid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from FREIGHT_UPDATE_DETAIL
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.sysco.entity.FreightUpdateDetailKey">
+    delete from FREIGHT_UPDATE_DETAIL
+    where uuid = #{uuid,jdbcType=VARCHAR}
+    and effective_date = #{effectiveDate,jdbcType=DATE}
+  </delete>
+  <insert id="insert" parameterType="com.sysco.entity.FreightUpdateDetail">
+    insert into FREIGHT_UPDATE_DETAIL (uuid, effective_date, pickup_allowance,
+    bracket_value, bracket_type, surcharge,
+    pu_percent, update_date, created_date,
+    created_time, modified_date, modified_time,
+    modified_by)
+    values (#{uuid,jdbcType=VARCHAR}, #{effectiveDate,jdbcType=DATE}, #{pickupAllowance,jdbcType=DECIMAL},
+    #{bracketValue,jdbcType=DECIMAL}, #{bracketType,jdbcType=INTEGER}, #{surcharge,jdbcType=DECIMAL},
+    #{puPercent,jdbcType=DECIMAL}, #{updateDate,jdbcType=DATE}, #{createdDate,jdbcType=DATE},
+    #{createdTime,jdbcType=VARCHAR}, #{modifiedDate,jdbcType=DATE}, #{modifiedTime,jdbcType=VARCHAR},
+    #{modifiedBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sysco.entity.FreightUpdateDetail">
+    insert into FREIGHT_UPDATE_DETAIL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="effectiveDate != null">
+        effective_date,
+      </if>
+      <if test="pickupAllowance != null">
+        pickup_allowance,
+      </if>
+      <if test="bracketValue != null">
+        bracket_value,
+      </if>
+      <if test="bracketType != null">
+        bracket_type,
+      </if>
+      <if test="surcharge != null">
+        surcharge,
+      </if>
+      <if test="puPercent != null">
+        pu_percent,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="modifiedDate != null">
+        modified_date,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+      <if test="modifiedBy != null">
+        modified_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="effectiveDate != null">
+        #{effectiveDate,jdbcType=DATE},
+      </if>
+      <if test="pickupAllowance != null">
+        #{pickupAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="bracketValue != null">
+        #{bracketValue,jdbcType=DECIMAL},
+      </if>
+      <if test="bracketType != null">
+        #{bracketType,jdbcType=INTEGER},
+      </if>
+      <if test="surcharge != null">
+        #{surcharge,jdbcType=DECIMAL},
+      </if>
+      <if test="puPercent != null">
+        #{puPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=DATE},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=DATE},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null">
+        #{modifiedDate,jdbcType=DATE},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null">
+        #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sysco.entity.FreightUpdateDetail">
+    update FREIGHT_UPDATE_DETAIL
+    <set>
+      <if test="pickupAllowance != null">
+        pickup_allowance = #{pickupAllowance,jdbcType=DECIMAL},
+      </if>
+      <if test="bracketValue != null">
+        bracket_value = #{bracketValue,jdbcType=DECIMAL},
+      </if>
+      <if test="bracketType != null">
+        bracket_type = #{bracketType,jdbcType=INTEGER},
+      </if>
+      <if test="surcharge != null">
+        surcharge = #{surcharge,jdbcType=DECIMAL},
+      </if>
+      <if test="puPercent != null">
+        pu_percent = #{puPercent,jdbcType=DECIMAL},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=DATE},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=DATE},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedDate != null">
+        modified_date = #{modifiedDate,jdbcType=DATE},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifiedBy != null">
+        modified_by = #{modifiedBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=VARCHAR}
+    and effective_date = #{effectiveDate,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sysco.entity.FreightUpdateDetail">
+    update FREIGHT_UPDATE_DETAIL
+    set pickup_allowance = #{pickupAllowance,jdbcType=DECIMAL},
+      bracket_value = #{bracketValue,jdbcType=DECIMAL},
+      bracket_type = #{bracketType,jdbcType=INTEGER},
+      surcharge = #{surcharge,jdbcType=DECIMAL},
+      pu_percent = #{puPercent,jdbcType=DECIMAL},
+      update_date = #{updateDate,jdbcType=DATE},
+      created_date = #{createdDate,jdbcType=DATE},
+      created_time = #{createdTime,jdbcType=VARCHAR},
+      modified_date = #{modifiedDate,jdbcType=DATE},
+      modified_time = #{modifiedTime,jdbcType=VARCHAR},
+      modified_by = #{modifiedBy,jdbcType=VARCHAR}
+    where uuid = #{uuid,jdbcType=VARCHAR}
+      and effective_date = #{effectiveDate,jdbcType=DATE}
+  </update>
+</mapper>

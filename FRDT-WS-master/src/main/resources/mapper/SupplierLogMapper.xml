@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sysco.dao.SupplierLogMapper">
+  <resultMap id="BaseResultMap" type="com.sysco.entity.SupplierLog">
+    <id column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="log_header" jdbcType="VARCHAR" property="logHeader" />
+    <result column="log_desc" jdbcType="VARCHAR" property="logDesc" />
+    <result column="verdor_uuid" jdbcType="VARCHAR" property="verdorUuid" />
+    <result column="verdor_name" jdbcType="VARCHAR" property="verdorName" />
+    <result column="oper_time" jdbcType="TIMESTAMP" property="operTime" />
+    <result column="oper_result" jdbcType="VARCHAR" property="operResult" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uuid, user_id, user_name, log_header, log_desc, verdor_uuid, verdor_name, oper_time, 
+    oper_result
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SUPPLIER_LOG
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectLogList"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from SUPPLIER_LOG
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SUPPLIER_LOG
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sysco.entity.SupplierLog">
+    insert into SUPPLIER_LOG (uuid, user_id, user_name, 
+      log_header, log_desc, verdor_uuid, 
+      verdor_name, oper_time, oper_result
+      )
+    values (#{uuid,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{logHeader,jdbcType=VARCHAR}, #{logDesc,jdbcType=VARCHAR}, #{verdorUuid,jdbcType=VARCHAR}, 
+      #{verdorName,jdbcType=VARCHAR}, #{operTime,jdbcType=TIMESTAMP}, #{operResult,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sysco.entity.SupplierLog">
+    insert into SUPPLIER_LOG
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="logHeader != null">
+        log_header,
+      </if>
+      <if test="logDesc != null">
+        log_desc,
+      </if>
+      <if test="verdorUuid != null">
+        verdor_uuid,
+      </if>
+      <if test="verdorName != null">
+        verdor_name,
+      </if>
+      <if test="operTime != null">
+        oper_time,
+      </if>
+      <if test="operResult != null">
+        oper_result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="logHeader != null">
+        #{logHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="logDesc != null">
+        #{logDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="verdorUuid != null">
+        #{verdorUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="verdorName != null">
+        #{verdorName,jdbcType=VARCHAR},
+      </if>
+      <if test="operTime != null">
+        #{operTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operResult != null">
+        #{operResult,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sysco.entity.SupplierLog">
+    update SUPPLIER_LOG
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="logHeader != null">
+        log_header = #{logHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="logDesc != null">
+        log_desc = #{logDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="verdorUuid != null">
+        verdor_uuid = #{verdorUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="verdorName != null">
+        verdor_name = #{verdorName,jdbcType=VARCHAR},
+      </if>
+      <if test="operTime != null">
+        oper_time = #{operTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operResult != null">
+        oper_result = #{operResult,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sysco.entity.SupplierLog">
+    update SUPPLIER_LOG
+    set user_id = #{userId,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      log_header = #{logHeader,jdbcType=VARCHAR},
+      log_desc = #{logDesc,jdbcType=VARCHAR},
+      verdor_uuid = #{verdorUuid,jdbcType=VARCHAR},
+      verdor_name = #{verdorName,jdbcType=VARCHAR},
+      oper_time = #{operTime,jdbcType=TIMESTAMP},
+      oper_result = #{operResult,jdbcType=VARCHAR}
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

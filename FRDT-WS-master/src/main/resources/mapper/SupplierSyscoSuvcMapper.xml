@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sysco.dao.SupplierSyscoSuvcMapper">
+  <resultMap id="BaseResultMap" type="com.sysco.entity.SupplierSyscoSuvc">
+    <id column="sysco_suvc" jdbcType="VARCHAR" property="syscoSuvc" />
+    <id column="ref_uuid" jdbcType="VARCHAR" property="refUuid" />
+    <result column="deleted" jdbcType="VARCHAR" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sysco_suvc, ref_uuid, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.sysco.entity.SupplierSyscoSuvcKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SUPPLIER_SYSCO_SUVC
+    where sysco_suvc = #{syscoSuvc,jdbcType=VARCHAR}
+      and ref_uuid = #{refUuid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectBySyscoSuvc" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from SUPPLIER_SYSCO_SUVC
+    where sysco_suvc IN
+    <foreach collection="syscoSuvcs" item="syscoSuvc" index="index"
+             open="(" close=")" separator=",">
+    #{syscoSuvc}
+    </foreach>
+    and deleted = 'N'
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.sysco.entity.SupplierSyscoSuvcKey">
+    delete from SUPPLIER_SYSCO_SUVC
+    where sysco_suvc = #{syscoSuvc,jdbcType=VARCHAR}
+      and ref_uuid = #{refUuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sysco.entity.SupplierSyscoSuvc">
+    insert into SUPPLIER_SYSCO_SUVC (sysco_suvc, ref_uuid, deleted
+      )
+    values (#{syscoSuvc,jdbcType=VARCHAR}, #{refUuid,jdbcType=VARCHAR}, #{deleted,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into SUPPLIER_SYSCO_SUVC (sysco_suvc, ref_uuid, deleted
+    )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.syscoSuvc,jdbcType=VARCHAR}, #{item.refUuid,jdbcType=VARCHAR}, #{item.deleted,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.sysco.entity.SupplierSyscoSuvc">
+    insert into SUPPLIER_SYSCO_SUVC
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="syscoSuvc != null">
+        sysco_suvc,
+      </if>
+      <if test="refUuid != null">
+        ref_uuid,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="syscoSuvc != null">
+        #{syscoSuvc,jdbcType=VARCHAR},
+      </if>
+      <if test="refUuid != null">
+        #{refUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sysco.entity.SupplierSyscoSuvc">
+    update SUPPLIER_SYSCO_SUVC
+    <set>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sysco_suvc = #{syscoSuvc,jdbcType=VARCHAR}
+      and ref_uuid = #{refUuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sysco.entity.SupplierSyscoSuvc">
+    update SUPPLIER_SYSCO_SUVC
+    set deleted = #{deleted,jdbcType=VARCHAR}
+    where sysco_suvc = #{syscoSuvc,jdbcType=VARCHAR}
+      and ref_uuid = #{refUuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

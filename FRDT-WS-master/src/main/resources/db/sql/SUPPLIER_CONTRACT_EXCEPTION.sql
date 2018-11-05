@@ -1,0 +1,25 @@
+
+CREATE TABLE `SUPPLIER_CONTRACT_EXCEPTION` (
+  `supplier_contract_no` int(11) NOT NULL,
+  `uuid` varchar(128) NOT NULL,
+  `contract_exception` varchar(128) DEFAULT NULL,
+  `created_date` date DEFAULT NULL,
+  `created_time` varchar(8) DEFAULT NULL,
+  `modified_date` date DEFAULT NULL,
+  `modified_time` varchar(8) DEFAULT NULL,
+  `modified_by` varchar(30) DEFAULT NULL,
+  `effective_date` date DEFAULT NULL,
+  `deleted` varchar(1) DEFAULT NULL,
+  `bracket1_header` varchar(30) DEFAULT NULL,
+  `bracket2_header` varchar(30) DEFAULT NULL,
+  `bracket3_header` varchar(30) DEFAULT NULL,
+  `bracket4_header` varchar(30) DEFAULT NULL,
+  `bracket5_header` varchar(30) DEFAULT NULL,
+  `bracket6_header` varchar(30) DEFAULT NULL,
+  `bracket7_header` varchar(30) DEFAULT NULL,
+  `bracket8_header` varchar(30) DEFAULT NULL,
+  `pickup_allowance_uom` varchar(30) DEFAULT NULL,
+  `freight_rate_uom` varchar(30) DEFAULT NULL,
+  `brackets_uom` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`supplier_contract_no`,`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
