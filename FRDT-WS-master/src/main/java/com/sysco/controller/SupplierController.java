@@ -11,6 +11,12 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessagePostProcessor;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.AbstractJavaTypeMapper;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.util.CollectionUtils;
@@ -30,14 +36,23 @@ public class SupplierController {
     @Autowired
     private SupplierInfoService supplierInfoService;
 
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
     @ResponseBody
     @RequestMapping(value = "create-supplier", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
     @ApiOperation(value = "create supplier", notes = "", response = GenericResponse.class)
     public GenericResponse create(@RequestBody @Validated ReqSupplier reqSupplier) throws IOException {
         GenericResponse genericResponse = new GenericResponse();
         genericResponse.setResult(true);
-        supplierInfoService.createSupplier(reqSupplier);
-        supplierInfoService.sendAttachmentsMail(reqSupplier);
+        //supplierInfoService.createSupplier(reqSupplier);
+        rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
+        rabbitTemplate.setExchange("vendor.exchange");
+        rabbitTemplate.setRoutingKey("vendor.insert");
+        rabbitTemplate.convertAndSend(reqSupplier, message -> {
+            message.getMessageProperties().setHeader(AbstractJavaTypeMapper.DEFAULT_CONTENT_CLASSID_FIELD_NAME,ReqSupplier.class.getName());
+            return message;
+        });
         return genericResponse;
     }
 

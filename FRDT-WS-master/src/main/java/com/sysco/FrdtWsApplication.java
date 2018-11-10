@@ -1,18 +1,16 @@
 package com.sysco;
 
+import com.sysco.common.Constants;
+import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StringUtils;
-import lombok.extern.slf4j.Slf4j;
-import com.sysco.common.Constants;
 
 @Slf4j
 @SpringBootApplication
 @EnableTransactionManagement
-@EnableAutoConfiguration
 @MapperScan("com.sysco.dao")
 public class FrdtWsApplication {
 

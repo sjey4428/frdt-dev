@@ -60,6 +60,7 @@
     <result column="business_center" jdbcType="VARCHAR" property="businessCenter" />
     <result column="corp_billed" jdbcType="VARCHAR" property="corpBilled" />
     <result column="true_fob_supplier" jdbcType="VARCHAR" property="trueFobSupplier" />
+    <result column="enable" jdbcType="VARCHAR" property="enable" />
   </resultMap>
   <sql id="Base_Column_List">
     uuid, effective_date, supplier_name, corporate_address, supplier_chain_manager,
@@ -74,7 +75,7 @@
     next_review_due_date,deleted, created_by,
     bracket1_header, bracket2_header, bracket3_header, bracket4_header, bracket5_header,
     bracket6_header, bracket7_header, bracket8_header, brackets_uom,
-    business_center, corp_billed, true_fob_supplier
+    business_center, corp_billed, true_fob_supplier, enable
   </sql>
 
   <select id="selectSCSSupplier"  parameterType="com.sysco.request.SCSFilterCondition"  resultType="com.sysco.entity.SCSSuppliersInfo">
@@ -226,7 +227,7 @@
       bracket1_header, bracket2_header, bracket3_header,
       bracket4_header, bracket5_header, bracket6_header,
       bracket7_header, bracket8_header, brackets_uom, business_center,
-      corp_billed, true_fob_supplier
+      corp_billed, true_fob_supplier,enable
     )
     values (#{uuid,jdbcType=VARCHAR}, #{effectiveDate,jdbcType=DATE}, #{supplierName,jdbcType=VARCHAR},
     #{corporateAddress,jdbcType=VARCHAR}, #{supplierChainManager,jdbcType=VARCHAR},
@@ -248,7 +249,7 @@
       #{bracket1Header,jdbcType=VARCHAR}, #{bracket2Header,jdbcType=VARCHAR}, #{bracket3Header,jdbcType=VARCHAR},
       #{bracket4Header,jdbcType=VARCHAR}, #{bracket5Header,jdbcType=VARCHAR}, #{bracket6Header,jdbcType=VARCHAR},
       #{bracket7Header,jdbcType=VARCHAR}, #{bracket8Header,jdbcType=VARCHAR}, #{bracketsUom,jdbcType=VARCHAR}, #{businessCenter,jdbcType=VARCHAR},
-      #{corpBilled,jdbcType=VARCHAR}, #{trueFobSupplier,jdbcType=VARCHAR})
+      #{corpBilled,jdbcType=VARCHAR}, #{trueFobSupplier,jdbcType=VARCHAR}, #{enable,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sysco.entity.SupplierInfo">
     insert into SUPPLIER_INFO
@@ -427,6 +428,9 @@
       <if test="trueFobSupplier != null">
         true_fob_supplier,
       </if>
+      <if test="enable != null">
+        enable,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="uuid != null">
@@ -602,6 +606,9 @@
       </if>
       <if test="trueFobSupplier != null">
         #{trueFobSupplier,jdbcType=VARCHAR},
+      </if>
+      <if test="enable != null">
+        #{enable,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -779,6 +786,9 @@
       <if test="trueFobSupplier != null">
         true_fob_supplier = #{trueFobSupplier,jdbcType=VARCHAR},
       </if>
+      <if test="enable != null">
+        enable = #{enable,jdbcType=VARCHAR},
+      </if>
     </set>
     where uuid = #{uuid,jdbcType=VARCHAR}
   </update>
@@ -840,7 +850,8 @@
       brackets_uom = #{bracketsUom,jdbcType=VARCHAR},
       business_center = #{businessCenter,jdbcType=VARCHAR},
       corp_billed = #{corpBilled,jdbcType=VARCHAR},
-      true_fob_supplier = #{trueFobSupplier,jdbcType=VARCHAR}
+      true_fob_supplier = #{trueFobSupplier,jdbcType=VARCHAR},
+      enable = #{enable,jdbcType=VARCHAR}
     where uuid = #{uuid,jdbcType=VARCHAR}
   </update>
 </mapper>

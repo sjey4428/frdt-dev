@@ -134,6 +134,10 @@ public class SupplierInfo implements Serializable {
     @Length(max=128, message = "supplierCommentsProfile:String length cannot exceed {max}")
     private String supplierCommentsProfile;
 
+    @Length(max=1, message = "enable:String length cannot exceed {max}")
+    @YNPattern(message = "enable:The value is 'N' or 'Y'")
+    private String enable;
+
     @ApiModelProperty(hidden = true)
     private BigDecimal truckloadMaximumWeight;
     @ApiModelProperty(hidden = true)
@@ -669,5 +673,13 @@ public class SupplierInfo implements Serializable {
 
     public void setTrueFobSupplier(String trueFobSupplier) {
         this.trueFobSupplier = trueFobSupplier;
+    }
+
+    public String getEnable() {
+        return enable;
+    }
+
+    public void setEnable(String enable) {
+        this.enable = enable;
     }
 }
